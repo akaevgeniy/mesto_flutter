@@ -25,7 +25,6 @@ class _AuthScreenState extends BasePageScreenState<AuthScreen> with BaseScreen {
   @override
   void initState() {
     isBackButton(false);
-    isShowAppBar(false);
     super.initState();
   }
 
@@ -38,6 +37,7 @@ class _AuthScreenState extends BasePageScreenState<AuthScreen> with BaseScreen {
   @override
   Widget body() {
     return BlocConsumer<AuthBloc, AuthState>(
+      bloc: authBloc,
       listener: (context, state) {
         if (state is AuthenticationSuccess) {
           context.push('/auth/pincode');
